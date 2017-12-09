@@ -5,8 +5,8 @@
 Why pop calc, when you can pop Nedry!? This repository contains an x86-64 payload that recreates the Jurassic Park scene in which Dennis Nedry locks Ray Arnold out of his terminal. Upon execution it takes the following steps:
 1. Allocates a console window with a call to `AllocConsole`
 2. Outputs "YOU DIDN'T SAY THE MAGIC WORD" repeatedly with calls to `WriteConsoleA`
-3. Dynamically loads `winmm.dll` and retrieves the procedure address for `PlaySoundA`
-4. Loads the "Ah, Ah, Ah...You didn't say the magic word" audio from memory using `PlaySoundA`
+3. Dynamically loads `winmm.dll` and retrieves the procedure address for `PlaySound`
+4. Loads the "Ah, Ah, Ah...You didn't say the magic word" audio from memory using `PlaySound`
 5. Dynamically loads `shell32.dll` and retrieves the procedure address for `ShellExecuteA`
 6. Opens the target's browser to a web page hosting the infamous Nedry GIF using `ShellExecuteA`
 7. Sleeps for some time to let the audio play

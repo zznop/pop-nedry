@@ -67,14 +67,14 @@ load_winmm:
 ;;; Get address for PlaySound procedure using GetProcAddress
 get_playsound_addr:
     mov rcx, rax                ; HMODULE hModule
-    mov rdx, 0x0000000000000064 ; push 'PlaySoundA' to the stack
+    mov rdx, 0x0000000000000064 ; push 'PlaySound' to the stack
     push rdx                    ; ..
     mov rdx, 0x6e756f5379616c50 ; ..
     push rdx                    ; ..
     mov rdx, rsp                ; LPCSTR lpProcName
     mov r10d, 0x7802f749        ; hash for kernel32!GetProcAddress
     call rbp                    ; lookup hash and call GetProcAddress
-    mov r14, rax                ; preserve addr of PlaySoundA in r14
+    mov r14, rax                ; preserve addr of PlaySound in r14
     jmp call_load_wav           ; jmp/call/pop to get addr of WAV buffer
 
 ;;; Load the WAV file from memory and play it asynchronously
@@ -83,7 +83,7 @@ load_wav:
     sub rsp, 0x20               ; shadow space
     xor rdx, rdx                ; HMODULE hmod
     mov r8, 0x000000000000000d  ; DWORD fdwSound - SND_MEMORY (4) | SND_ASYNC (1) | SND_LOOP (8)
-    call rax                    ; call PlaySoundA
+    call rax                    ; call PlaySound
     add rsp, 0x20               ; re-align
 
 ;;; Load shell32.dll
@@ -142,7 +142,7 @@ stop_wav:
     xor rcx, rcx                ; LPCTSTR pszSound - pointer to WAV buffer
     xor rdx, rdx                ; HMODULE hmod
     xor r8, r8                  ; DWORD fdwSound
-    call r14                    ; call PlaySoundA
+    call r14                    ; call PlaySound
     add rsp, 0x20               ; re-align
 
 ;;; Reset stack and return (thrown off by shadow alignment by api_call and string pushes)
