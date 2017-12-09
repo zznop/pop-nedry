@@ -1,6 +1,4 @@
-# pop-nedry
-Author: **zznop**
-
+# "Pop Nedry" x86-64 Payload
 ![alt text](screenshots/screenshot.png)
 
 # Description
@@ -50,6 +48,9 @@ Test the shellcode with included ShellcodeTester.exe utilty (or your favorite ex
 > cd .\utils
 > ShellcodeTester.exe ..\build\nedry.bin
 ```
+
+# Author(s)
+* Brandon Miller ([@zznop_](https://twitter.com/zznop_))
 
 # Additional Credit
 * http://mikebrungs.com/sounds.htm for the WAV file
