@@ -27,7 +27,7 @@ This will compile the assembly, drop the binary in `.\build`, and write in the N
 You can also build the shellcode manually from any OS with nasm.
 ```
 > cd .\src
-> nasm -f bin -o pop-nedry.bin 
+> nasm -f bin -o pop-nedry.bin pop-nedry.asm
 ```
 Once you've built the binary, you need to patch in your URL. To do so, open a hex editor and seek to `0x1dd`. Overwrite the NULL bytes with your URL. Make sure it starts with `http://` or `https://`. Do not use a URL that's more than 63 characters to ensure that you've left atleast one NULL to terminate the string.
 
